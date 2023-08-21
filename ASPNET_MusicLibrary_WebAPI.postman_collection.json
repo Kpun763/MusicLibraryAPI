@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "d4ca986e-08c8-40f1-9389-b4a857bf848e",
+		"name": "ASPNET_MusicLibrary_WebAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29173397"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7073/api/MusicLibrary",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7073",
+					"path": [
+						"api",
+						"MusicLibrary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7073/api/MusicLibrary/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7073",
+					"path": [
+						"api",
+						"MusicLibrary",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Title\": \"The Color Violet\",\r\n    \"Artist\": \"Tory Lanez\",\r\n    \"Album\": \"Alone At Prom\",\r\n    \"ReleaseDate\":\"2021-12-10\",\r\n    \"Genre\":\"R&B\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7073/api/MusicLibrary",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7073",
+					"path": [
+						"api",
+						"MusicLibrary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\": 3,\r\n    \"Title\": \"My Hero\",\r\n    \"Artist\": \"Foo fighters\",\r\n    \"Album\": \"The Colour and the Shape\",\r\n    \"ReleaseDate\":\"1997-05-20\",\r\n    \"Genre\":\"Alternative\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7073/api/MusicLibrary/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7073",
+					"path": [
+						"api",
+						"MusicLibrary",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\": 3,\r\n    \"Title\": \"My Hero\",\r\n    \"Artist\": \"Foo fighters\",\r\n    \"Album\": \"The Colour and the Shape\",\r\n    \"ReleaseDate\":\"1997-05-20\",\r\n    \"Genre\":\"Alternative\",\r\n    \"Likes\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7073/api/MusicLibrary/3/like",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7073",
+					"path": [
+						"api",
+						"MusicLibrary",
+						"3",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\": 3,\r\n    \"Title\": \"My Hero\",\r\n    \"Artist\": \"Foo fighters\",\r\n    \"Album\": \"The Colour and the Shape\",\r\n    \"ReleaseDate\":\"1997-05-20\",\r\n    \"Genre\":\"Alternative\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7073/api/MusicLibrary/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7073",
+					"path": [
+						"api",
+						"MusicLibrary",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
