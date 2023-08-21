@@ -64,6 +64,18 @@ namespace MusicLibraryAPI.Controllers
             _context.SaveChanges();
             return Ok(existingSong);
         }
+        // PUT api/<MusicLibrary>/5
+        [HttpPut("{id}/like")]
+        public IActionResult LikeSong(int id)
+        {
+            var song = _context.MusicLibraries.Find(id);
+            if (song == null) return NotFound();
+
+            song.Likes++;
+            _context.SaveChanges();
+
+            return Ok(song.Likes);
+        }
 
         // DELETE api/<MusicLibrary>/5
         [HttpDelete("{id}")]
