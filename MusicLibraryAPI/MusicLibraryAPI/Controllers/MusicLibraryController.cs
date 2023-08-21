@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MusicLibraryAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using MusicLibraryAPI.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,27 +27,56 @@ namespace MusicLibraryAPI.Controllers
 
         // GET api/<MusicLibrary>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult GetSongById(int id)
         {
-            return "value";
+            var song = _context.MusicLibraries.Find(id);
+
+            if (song == null) 
+            return NotFound();
+
+            return Ok(song);
         }
 
         // POST api/<MusicLibrary>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult CreateSong([FromBody] MusicLibrary newSong)
         {
+            if(newSong == null) return BadRequest();
+            _context.MusicLibraries.Add(newSong);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(GetSongById), new {id = newSong.Id}, newSong);
         }
 
         // PUT api/<MusicLibrary>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult UpdateSong(int id, [FromBody] MusicLibrary updatedSong)
         {
+            var existingSong = _context.MusicLibraries.Find(id);
+            if (existingSong == null)
+                return NotFound();
+
+            existingSong.Title = updatedSong.Title;
+            existingSong.Artist = updatedSong.Artist;
+            existingSong.Album = updatedSong.Album;
+            existingSong.ReleaseDate = updatedSong.ReleaseDate;
+            existingSong.Genre = updatedSong.Genre;
+            _context.SaveChanges();
+            return Ok(existingSong);
         }
 
         // DELETE api/<MusicLibrary>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteSong(int id)
         {
+            var songToDelete = _context.MusicLibraries.Find(id);
+            if (songToDelete == null) 
+                return NotFound();
+
+            _context.MusicLibraries.Remove(songToDelete);
+            _context.SaveChanges();
+
+            return NoContent();
         }
     }
 }
